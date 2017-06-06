@@ -40,6 +40,7 @@
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QYa-oI-sRU">
                                 <rect key="frame" x="20" y="129" width="280" height="419"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ka3-t1-69e">
                                     <size key="itemSize" width="105" height="105"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -76,7 +77,6 @@
                                             <constraint firstItem="JmQ-wW-PSF" firstAttribute="leading" secondItem="X0h-z9-cTv" secondAttribute="leading" id="BEy-hV-pkQ"/>
                                             <constraint firstItem="VQ4-KN-3l9" firstAttribute="leading" secondItem="X0h-z9-cTv" secondAttribute="leading" id="Oyb-fl-pp9"/>
                                             <constraint firstItem="VQ4-KN-3l9" firstAttribute="leading" secondItem="X0h-z9-cTv" secondAttribute="leading" id="Ty5-n0-YaV"/>
-                                            <constraint firstItem="VQ4-KN-3l9" firstAttribute="top" secondItem="X0h-z9-cTv" secondAttribute="top" id="bYP-IB-HHI"/>
                                             <constraint firstAttribute="bottom" secondItem="VQ4-KN-3l9" secondAttribute="bottom" id="bqC-n9-lhc"/>
                                             <constraint firstAttribute="trailing" secondItem="VQ4-KN-3l9" secondAttribute="trailing" id="dhQ-oE-jTI"/>
                                             <constraint firstAttribute="bottom" secondItem="VQ4-KN-3l9" secondAttribute="bottom" id="eOa-aH-8zU"/>
@@ -109,6 +109,9 @@
                             <constraint firstItem="QYa-oI-sRU" firstAttribute="top" secondItem="jUg-Pj-Yhw" secondAttribute="bottom" constant="20" id="prp-JV-x0e"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collection" destination="QYa-oI-sRU" id="BSX-6c-Gpf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
