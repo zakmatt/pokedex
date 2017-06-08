@@ -85,7 +85,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        let pokemon: Pokemon!
+        if inSearchMode {
+            pokemon = filteredPokemons[indexPath.row]
+        } else {
+            pokemon = pokemons[indexPath.row]
+        }
+        
+        performSegue(withIdentifier: "PokemonDetailVC", sender: pokemon)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -131,6 +138,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             collection.reloadData()
             // range -> is lowerCased included in the range of $0.name
             filteredPokemons = pokemons.filter { $0.name.range(of: lowerCased) != nil }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PokemonDetailVC" {
+            if let detailsVC = segue.destination as? PokemonDetailVC {
+                if let pokemon = sender as? Pokemon {
+                    detailsVC.pokemon = pokemon
+                }
+            }
         }
     }
 }
