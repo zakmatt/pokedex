@@ -48,6 +48,17 @@ class PokemonDetailVC: UIViewController {
         heightLbl.text = pokemon.height
         weightLbl.text = pokemon.weight
         typeLbl.text = pokemon.type
+        descriptionLbl.text = pokemon.description
+        
+        if pokemon.nextEvolutionId == "" {
+            evoLbl.text = "This is the final form!"
+            nextEvoImg.isHidden = true
+        } else {
+            nextEvoImg.isHidden = false
+            nextEvoImg.image = UIImage(named: pokemon.nextEvolutionId)
+            evoLbl.text = "Next evolution: \(pokemon.nextEvolutionName) - LVL \(pokemon.nextEvolutionLvl)"
+        }
+        
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
