@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class MainVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -65,8 +65,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    @IBAction func musicButtonPressed(_ sender: UIButton) {
+        if musicPlayer.isPlaying {
+            musicPlayer.pause()
+            sender.alpha = 0.2 // dim the button a bit
+        } else {
+            musicPlayer.play()
+            sender.alpha = 1.0
+        }
+    }
+    
+}
+
+extension MainVC {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokeCell", for: indexPath) as? PokeCell {
+        let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as PokeCell
+        //if let cell =  {
             
             let pokemon: Pokemon!
             
@@ -79,9 +93,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             cell.configureCell(pokemon)
             
             return cell
-        } else {
-            return UICollectionViewCell()
-        }
+        //} else {
+        //    return UICollectionViewCell()
+        //}
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -110,16 +124,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 105, height: 105)
-    }
-    
-    @IBAction func musicButtonPressed(_ sender: UIButton) {
-        if musicPlayer.isPlaying {
-            musicPlayer.pause()
-            sender.alpha = 0.2 // dim the button a bit
-        } else {
-            musicPlayer.play()
-            sender.alpha = 1.0
-        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

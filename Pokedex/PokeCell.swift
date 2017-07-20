@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PokeCell: UICollectionViewCell {
+class PokeCell: UICollectionViewCell, ReusableView {
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
